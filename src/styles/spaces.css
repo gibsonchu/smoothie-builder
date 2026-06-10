@@ -1,0 +1,124 @@
+.space-cabin {
+  --room-bg:
+    radial-gradient(circle at 20% 8%, rgba(245, 237, 216, 0.55), transparent 28%),
+    linear-gradient(138deg, rgba(59, 42, 26, 0.82), rgba(112, 73, 38, 0.78)),
+    repeating-linear-gradient(90deg, #3b2a1a 0 18px, #4a321d 18px 34px);
+  --surface: #d8c59c;
+  --surface-texture:
+    repeating-linear-gradient(94deg, rgba(59, 42, 26, 0.16) 0 1px, transparent 1px 19px),
+    linear-gradient(180deg, #f5edd8, #c9a96e);
+  --ink: #2f2117;
+  --muted: #6a5439;
+  --accent: #c9a96e;
+  --accent-strong: #f2c66b;
+  --panel: rgba(245, 237, 216, 0.78);
+  --panel-border: rgba(59, 42, 26, 0.18);
+  --glass-line: rgba(245, 237, 216, 0.78);
+  --button-face: #c9a96e;
+  --button-shadow: #6e4728;
+}
+
+.space-barrys {
+  --room-bg:
+    linear-gradient(90deg, rgba(232, 0, 29, 0.34) 0 2px, transparent 2px 21%),
+    radial-gradient(circle at 70% 8%, rgba(232, 0, 29, 0.65), transparent 24%),
+    linear-gradient(135deg, #0d0d0d, #1a1112 58%, #050505);
+  --surface: #171717;
+  --surface-texture:
+    linear-gradient(90deg, rgba(232, 0, 29, 0.34) 0 3px, transparent 3px 46px),
+    linear-gradient(180deg, #2a2a2a, #050505);
+  --ink: #f0f0f0;
+  --muted: #c8c8c8;
+  --accent: #e8001d;
+  --accent-strong: #ff3349;
+  --panel: rgba(13, 13, 13, 0.72);
+  --panel-border: rgba(240, 240, 240, 0.14);
+  --glass-line: rgba(255, 255, 255, 0.72);
+  --button-face: #e8001d;
+  --button-shadow: #62000c;
+}
+
+.space-noguchi {
+  --room-bg:
+    radial-gradient(circle at 78% 32%, rgba(60, 106, 67, 0.18), transparent 11%),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.78), transparent 34%),
+    linear-gradient(122deg, #e8e4dc, #cfc8ba 54%, #9b9080);
+  --surface: #d8d2c8;
+  --surface-texture:
+    radial-gradient(circle at 24% 40%, rgba(44, 43, 41, 0.08) 0 1px, transparent 2px),
+    radial-gradient(circle at 64% 58%, rgba(44, 43, 41, 0.09) 0 1px, transparent 2px),
+    linear-gradient(180deg, #eeeae2, #bfb7aa);
+  --ink: #2c2b29;
+  --muted: #625d54;
+  --accent: #9b9080;
+  --accent-strong: #5f5a50;
+  --panel: rgba(252, 250, 244, 0.72);
+  --panel-border: rgba(44, 43, 41, 0.16);
+  --glass-line: rgba(44, 43, 41, 0.42);
+  --button-face: #9b9080;
+  --button-shadow: #565047;
+}
+
+.space-beach {
+  --room-bg:
+    radial-gradient(circle at 28% 10%, rgba(255, 255, 255, 0.88), transparent 26%),
+    linear-gradient(180deg, rgba(126, 200, 200, 0.78), rgba(234, 244, 244, 0.92) 42%, rgba(200, 169, 126, 0.58)),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.24) 0 10px, transparent 10px 28px);
+  --surface: #e6d2b5;
+  --surface-texture:
+    repeating-linear-gradient(88deg, rgba(124, 94, 55, 0.14) 0 2px, transparent 2px 26px),
+    linear-gradient(180deg, #f6ead7, #c8a97e);
+  --ink: #183c3e;
+  --muted: #526b69;
+  --accent: #7ec8c8;
+  --accent-strong: #2f9da3;
+  --panel: rgba(234, 244, 244, 0.72);
+  --panel-border: rgba(24, 60, 62, 0.14);
+  --glass-line: rgba(255, 255, 255, 0.84);
+  --button-face: #7ec8c8;
+  --button-shadow: #347f83;
+}
+
+.space-milan {
+  --room-bg:
+    linear-gradient(90deg, rgba(200, 184, 154, 0.2), transparent 22%, rgba(91, 107, 71, 0.24)),
+    radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.62), transparent 20%),
+    linear-gradient(126deg, #d4cfc6, #e7e0d6 50%, #5b6b47);
+  --surface: #ece6dc;
+  --surface-texture:
+    radial-gradient(circle at 18% 35%, rgba(91, 107, 71, 0.24) 0 2px, transparent 3px),
+    radial-gradient(circle at 66% 58%, rgba(97, 81, 64, 0.2) 0 2px, transparent 3px),
+    radial-gradient(circle at 42% 72%, rgba(200, 184, 154, 0.62) 0 3px, transparent 4px),
+    linear-gradient(180deg, #f7f2ea, #d4cfc6);
+  --ink: #29301f;
+  --muted: #5e604f;
+  --accent: #5b6b47;
+  --accent-strong: #b49d72;
+  --panel: rgba(244, 239, 230, 0.74);
+  --panel-border: rgba(91, 107, 71, 0.18);
+  --glass-line: rgba(41, 48, 31, 0.44);
+  --button-face: #c8b89a;
+  --button-shadow: #6b5f48;
+}
+
+.space-tokyo {
+  --room-bg:
+    linear-gradient(90deg, rgba(0, 87, 255, 0.14) 0 1px, transparent 1px 48px),
+    linear-gradient(0deg, rgba(255, 59, 59, 0.12) 0 1px, transparent 1px 48px),
+    radial-gradient(circle at 78% 14%, rgba(255, 59, 59, 0.32), transparent 18%),
+    linear-gradient(135deg, #fafafa, #e9f0ff 55%, #fff);
+  --surface: #f9f9f9;
+  --surface-texture:
+    linear-gradient(90deg, rgba(0, 87, 255, 0.12) 0 1px, transparent 1px 36px),
+    linear-gradient(0deg, rgba(255, 59, 59, 0.1) 0 1px, transparent 1px 36px),
+    linear-gradient(180deg, #fff, #e7e7e7);
+  --ink: #111;
+  --muted: #4f5560;
+  --accent: #0057ff;
+  --accent-strong: #ff3b3b;
+  --panel: rgba(255, 255, 255, 0.78);
+  --panel-border: rgba(0, 87, 255, 0.18);
+  --glass-line: rgba(17, 17, 17, 0.44);
+  --button-face: #ff3b3b;
+  --button-shadow: #0057ff;
+}
