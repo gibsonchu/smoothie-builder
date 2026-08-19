@@ -23,11 +23,13 @@ export function RecipeReveal({ recipe, ingredients, onReset }: Props) {
     return [
       recipe.name,
       recipe.serves,
-      `${recipe.calories} calories`,
-      `${recipe.nutrition.protein} protein / ${recipe.nutrition.carbs} carbs / ${recipe.nutrition.fat} fat / ${recipe.nutrition.fiber} fiber`,
+      `${recipe.calories}`,
+      recipe.nutrition.protein,
+      recipe.nutrition.carbs,
+      recipe.nutrition.fat,
+      recipe.nutrition.fiber,
       ...recipe.ingredients.map((item) => `${item.amount} ${item.item}`),
       ...recipe.steps,
-      recipe.grandmasNote,
     ]
   }, [recipe])
 
@@ -80,21 +82,18 @@ export function RecipeReveal({ recipe, ingredients, onReset }: Props) {
 
   return (
     <article className="recipe-page">
-      <header className="recipe-header">
-        <span>RECIPE / {new Date().toLocaleDateString('en-US', { month: 'short', day: '2-digit' }).toUpperCase()}</span>
-        <span>MADE FROM WHAT WAS HERE</span>
-      </header>
-
       <div className="recipe-grid">
         <section className="recipe-title">
-          <p className="zine-kicker">A small recipe for today</p>
           <h1>{line(recipe.name)}</h1>
           <p className="recipe-serves">{line(recipe.serves)}</p>
         </section>
 
         <section className="nutrition-strip" aria-label="Estimated nutrition">
           <div><strong>{line(`${recipe.calories}`)}</strong><span>CALORIES</span></div>
-          <p>{line(`${recipe.nutrition.protein} protein / ${recipe.nutrition.carbs} carbs / ${recipe.nutrition.fat} fat / ${recipe.nutrition.fiber} fiber`)}</p>
+          <div><strong>{line(recipe.nutrition.protein)}</strong><span>PROTEIN</span></div>
+          <div><strong>{line(recipe.nutrition.carbs)}</strong><span>CARBS</span></div>
+          <div><strong>{line(recipe.nutrition.fat)}</strong><span>FAT</span></div>
+          <div><strong>{line(recipe.nutrition.fiber)}</strong><span>FIBER</span></div>
         </section>
 
         <section className="recipe-section recipe-ingredients">
@@ -113,14 +112,9 @@ export function RecipeReveal({ recipe, ingredients, onReset }: Props) {
           </ol>
         </section>
 
-        <aside className="grandma-note">
-          <span>GRANDMA'S NOTE</span>
-          <p>{line(recipe.grandmasNote)}</p>
-        </aside>
       </div>
 
       <footer className="recipe-footer">
-        <span>ESTIMATES ONLY / TASTE AS YOU GO</span>
         <button type="button" className="zine-button zine-button--ink" onClick={onReset}>
           <RotateCcw size={17} /> Make another
         </button>

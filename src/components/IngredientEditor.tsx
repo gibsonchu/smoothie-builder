@@ -42,8 +42,6 @@ export function IngredientEditor({ catalog, initialSelected, image, note, onBack
         <button type="button" className="icon-button" onClick={onBack} aria-label="Go back" title="Go back">
           <ArrowLeft size={19} />
         </button>
-        <p>{image ? 'PHOTO STUDY / IDENTIFIED' : 'PANTRY INDEX / SELECT'}</p>
-        <span>{String(selected.length).padStart(2, '0')} CHOSEN</span>
       </header>
 
       <div className="editor-shell">
@@ -61,7 +59,6 @@ export function IngredientEditor({ catalog, initialSelected, image, note, onBack
           </figure>
         ) : (
           <div className="editor-title-block">
-            <p className="zine-kicker">Choose what is within reach</p>
             <h1>What do you have?</h1>
           </div>
         )}

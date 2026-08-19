@@ -5,7 +5,7 @@
 - Source visual truth: `/var/folders/rf/kb7vbr1n0dvdj882p6twxsrw0000gn/T/TemporaryItems/NSIRD_screencaptureui_uyIIDO/Screenshot 2026-08-19 at 3.41.20 PM.png`
 - Primary implementation: `design-mobile-landing.png`
 - Combined comparison: `design-qa-comparison.png`
-- Supporting states: `design-mobile-photo-entry.png`, `design-mobile-photo-review.png`, `design-mobile-recipe.png`, `design-desktop-landing.png`
+- Supporting states: `design-mobile-photo-entry.png`, `design-mobile-select.png`, `design-mobile-photo-review.png`, `design-mobile-recipe.png`, `design-desktop-landing.png`
 - Source dimensions: 500 x 352 px
 - Mobile implementation: 375 x 812 CSS px, 375 x 812 px capture, device scale factor 1
 - Desktop implementation: 1440 x 900 CSS px, 1440 x 900 px capture, device scale factor 1
@@ -18,8 +18,9 @@ The combined comparison shows the supplied cropped artwork beside the mobile imp
 ## Focused Evidence
 
 - `design-mobile-photo-review.png` verifies the uploaded image, retake action, search field, editable ingredient ledger, clear state, and confirm action in a 375 px layout.
+- `design-mobile-select.png` verifies that all 20 ingredients and the complete action row fit within a 375 x 812 viewport without document scrolling.
 - `design-mobile-photo-entry.png` verifies that the first Photo screen contains only the centered “Take a Photo” and “Upload a Photo” actions.
-- `design-mobile-recipe.png` verifies calorie and macro estimates, ingredient quantities, numbered steps, Grandma's Note, progressive typewriter content, and readable narrow-screen wrapping.
+- `design-mobile-recipe.png` verifies large calorie and macro values, precise ingredient quantities, direct numbered steps, progressive typewriter content, and readable narrow-screen wrapping.
 - `design-desktop-landing.png` verifies that the sparse attention geometry remains intact at 1440 px without horizontal overflow.
 
 ## Required Fidelity Surfaces
@@ -28,7 +29,7 @@ The combined comparison shows the supplied cropped artwork beside the mobile imp
 - Spacing and layout rhythm: the primary cluster stays centered with broad paper margins. Mobile controls remain within 335 px, while desktop content holds a restrained 520-620 px working width.
 - Colors and tokens: warm ivory paper, charcoal ink, faded gray metadata, and one tomato-red action/selection color match the reference's restrained palette logic.
 - Image quality and asset fidelity: the user-supplied produce crop is used directly as a raster asset with its halftone wear, aged paper, glass, and red fruit anchor intact. It is scaled responsively without further cropping.
-- Copy and content: the landing page contains only “Got juice?”, “Photo”, and “Select”. The first Photo screen contains only “Take a Photo” and “Upload a Photo”.
+- Copy and content: the landing page contains only “Got juice?”, “Photo”, and “Select”. The first Photo screen contains only “Take a Photo” and “Upload a Photo”. Selector metadata is removed, and recipe language is concise and practical without affectionate asides.
 
 ## Comparison History
 
@@ -39,6 +40,8 @@ The combined comparison shows the supplied cropped artwork beside the mobile imp
 - P2: the artwork canvas initially formed a faint lighter rectangle against the page. Sampled its edge color, matched the landing background to `#e7d9bd`, and softly masked the raster perimeter so the paper field now renders as one continuous surface.
 - P2: the landing still used the original tall poster asset after the desired composition had been cropped externally. Replaced it with the supplied 500 x 352 crop, matched the page to its `#ebdfc2` paper edge, and changed responsive sizing from height-based to width-based so the full crop remains visible.
 - P2: the title and actions were pinned near opposite viewport edges, making the landing feel vertically dispersed. Moved the artwork into the document flow and centered the title, artwork, and actions as one responsive group; its measured center is exactly 406 px at 375 x 812 and 450 px at 1440 x 900.
+- P2: the manual selector and photo-review ledger required vertical scrolling and repeated selection metadata. Removed the header labels and eyebrow, changed the 20-item ledger to a compact two-column viewport grid, shortened the photo preview, and verified both states at a document height of exactly 812 px in a 375 x 812 viewport.
+- P2: the recipe mixed small macro text with decorative metadata, affectionate copy, and a separate note section. Removed those elements, rewrote fallback and generated recipes in direct language, and split nutrition into five labeled values rendered at 37.5 px on the verified mobile viewport.
 
 ## Findings
 

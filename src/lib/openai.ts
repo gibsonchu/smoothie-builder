@@ -12,7 +12,7 @@ export type Recipe = {
   }
   ingredients: { item: string; amount: string }[]
   steps: string[]
-  grandmasNote: string
+  grandmasNote?: string
 }
 
 export type DetectedIngredient = {
@@ -27,11 +27,11 @@ export type PhotoScanResult = {
   apiKeyMissing?: boolean
 }
 
-const fallbackAmounts = ['a good handful', 'one ripe scoop', 'a cheerful splash', 'a little spoonful']
+const fallbackAmounts = ['1 cup', '1 medium', '3/4 cup', '1 tablespoon']
 
 export const fallbackRecipe = (ingredients: Ingredient[]): Recipe => ({
-  name: `${ingredients[0]?.name ?? 'Sunny'} Porch Smoothie`,
-  serves: 'Serves 2, or one hungry sweetheart',
+  name: `${ingredients[0]?.name ?? 'Fruit'} Smoothie`,
+  serves: 'Serves 2',
   calories: 285,
   nutrition: {
     protein: '9g',
@@ -44,13 +44,11 @@ export const fallbackRecipe = (ingredients: Ingredient[]): Recipe => ({
     amount: fallbackAmounts[index % fallbackAmounts.length],
   })),
   steps: [
-    'I tuck the soft things into the blender first so everything settles down nicely.',
-    'Add the milk or yogurt, then the colder bits, and let the blender hum until it looks silky.',
-    'Taste it with a little spoon and sweeten only if it asks you politely.',
-    'Pour it right away, while it is still frosty and proud of itself.',
+    'Add the liquid ingredients to the blender.',
+    'Add the remaining ingredients and ice.',
+    'Blend on high until smooth, about 45 seconds.',
+    'Pour into two glasses and serve immediately.',
   ],
-  grandmasNote:
-    "If it gets too thick, I add one small splash at a time. Smoothies like patience, darling.",
 })
 
 const parseRecipe = (content: string, ingredients: Ingredient[]) => {
@@ -59,9 +57,11 @@ const parseRecipe = (content: string, ingredients: Ingredient[]) => {
   try {
     const parsed = JSON.parse(raw) as Partial<Recipe>
     const fallback = fallbackRecipe(ingredients)
+    const servingCount = typeof parsed.serves === 'string' ? parsed.serves.match(/\d+/)?.[0] : undefined
     return {
       ...fallback,
       ...parsed,
+      serves: servingCount ? `Serves ${servingCount}` : fallback.serves,
       nutrition: { ...fallback.nutrition, ...parsed.nutrition },
       ingredients: Array.isArray(parsed.ingredients) ? parsed.ingredients : fallback.ingredients,
       steps: Array.isArray(parsed.steps) ? parsed.steps : fallback.steps,
@@ -89,11 +89,11 @@ export async function generateRecipe(ingredients: Ingredient[]): Promise<Recipe>
           {
             role: 'system',
             content:
-              "You are a warm, loving grandmother who has been making smoothies for 40 years. Write recipes in first person, casually and affectionately, like you're writing a note card for your grandchild. Use imprecise, loving language: 'a good handful', 'until it looks right'. Always give the smoothie a charming name. Include a reasonable estimated calorie count and simple macro estimates per serving.",
+              'You are a practical recipe writer. Write clear, concise smoothie recipes with standard measurements and direct instructions. Avoid first-person phrasing, affection, jokes, whimsical language, and cute names. Include a reasonable estimated calorie count and simple macro estimates per serving.',
           },
           {
             role: 'user',
-            content: `Make me a smoothie recipe using: ${ingredients.map((item) => item.name).join(', ')}. Format your response as JSON with fields: name (string), serves (string), calories (number per serving), nutrition ({protein, carbs, fat, fiber} as strings with units), ingredients (array of {item, amount}), steps (array of 3-5 strings), grandmasNote (string).`,
+            content: `Create a smoothie recipe using: ${ingredients.map((item) => item.name).join(', ')}. Format your response as JSON with fields: name (string), serves (string, formatted exactly like "Serves 2"), calories (number per serving), nutrition ({protein, carbs, fat, fiber} as strings with units), ingredients (array of {item, amount}), and steps (array of 3-5 concise strings).`,
           },
         ],
       }),
