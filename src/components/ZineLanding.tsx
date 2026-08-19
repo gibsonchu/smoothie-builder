@@ -9,7 +9,7 @@ export function ZineLanding({ onPhoto, onChoose }: Props) {
   return (
     <section className="landing-page">
       <div className="landing-copy">
-        <h1>Make a juice<br />or smoothie.</h1>
+        <h1>Got juice?</h1>
 
         <div className="landing-actions" aria-label="Start a smoothie recipe">
           <button type="button" className="zine-button zine-button--accent" onClick={onPhoto}>

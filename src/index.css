@@ -100,7 +100,7 @@ button:disabled { cursor: not-allowed; }
   overflow: hidden;
   background-image: url('/assets/zine-produce-study.webp');
   background-position: center 58%;
-  background-size: cover;
+  background-size: auto 64%;
   background-repeat: no-repeat;
 }
 
@@ -334,25 +334,12 @@ button:disabled { cursor: not-allowed; }
 .capture-shell {
   position: relative;
   width: min(100%, 900px);
-  min-height: calc(100svh - 105px);
-  margin: 3svh auto 0;
+  min-height: calc(100svh - 56px);
+  margin: 0 auto;
 }
 
-.capture-copy { position: relative; z-index: 2; width: min(100%, 590px); margin: 8svh auto 0; text-align: center; }
-.capture-copy h1 { font-size: clamp(44px, 11vw, 76px); line-height: 0.88; }
-.capture-copy > p:last-child { width: min(100%, 440px); margin: 22px auto 0; color: var(--faded); font-family: 'Special Elite', serif; font-size: 12px; line-height: 1.6; }
-
-.capture-study-image {
-  display: block;
-  width: min(76vw, 340px);
-  height: 230px;
-  margin: 18px auto -2px;
-  object-fit: cover;
-  object-position: 50% 68%;
-  mix-blend-mode: multiply;
-}
-
-.capture-actions { display: grid; gap: 9px; width: min(100%, 390px); margin: 0 auto; }
+.capture-shell--intro { display: grid; place-items: center; }
+.capture-actions { display: grid; gap: 10px; width: min(100%, 280px); }
 .capture-error { width: min(100%, 540px); margin: 16px auto; color: #9f2d25; font-size: 10px; line-height: 1.5; text-align: center; }
 
 .camera-stage {
@@ -441,7 +428,6 @@ button:disabled { cursor: not-allowed; }
   .ingredient-row:nth-child(odd) { border-right: 1px solid var(--hairline); }
   .editor-actions { grid-template-columns: 1fr auto 210px; }
   .confirm-button { grid-column: auto; }
-  .capture-actions { grid-template-columns: 1fr 1fr; width: 600px; }
   .recipe-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; column-gap: 70px; }
   .recipe-title, .nutrition-strip, .grandma-note { grid-column: 1 / -1; }
   .recipe-ingredients { grid-column: 1; }

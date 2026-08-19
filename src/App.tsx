@@ -73,7 +73,6 @@ function App() {
           {view === 'photo' ? (
             <PhotoCapture
               catalog={ingredients}
-              onBack={() => setView('landing')}
               onDetected={({ preview, detected, message }) => {
                 setPhoto(preview)
                 setSelected(detected)

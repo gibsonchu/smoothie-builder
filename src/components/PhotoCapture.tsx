@@ -1,4 +1,4 @@
-import { ArrowLeft, Camera, ImageUp, LoaderCircle, ScanLine, X } from 'lucide-react'
+import { Camera, ImageUp, LoaderCircle, ScanLine, X } from 'lucide-react'
 import { useEffect, useRef, useState, type ChangeEvent } from 'react'
 import type { Ingredient } from '../data/ingredients'
 import { identifyIngredientsFromPhoto } from '../lib/openai'
@@ -11,7 +11,6 @@ type Detection = {
 
 type Props = {
   catalog: Ingredient[]
-  onBack: () => void
   onDetected: (result: Detection) => void
 }
 
@@ -38,7 +37,7 @@ const resizeImage = (dataUrl: string) => new Promise<string>((resolve) => {
   image.src = dataUrl
 })
 
-export function PhotoCapture({ catalog, onBack, onDetected }: Props) {
+export function PhotoCapture({ catalog, onDetected }: Props) {
   const uploadRef = useRef<HTMLInputElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
   const streamRef = useRef<MediaStream | null>(null)
@@ -108,34 +107,16 @@ export function PhotoCapture({ catalog, onBack, onDetected }: Props) {
 
   return (
     <section className="capture-page">
-      <header className="editor-header">
-        <button type="button" className="icon-button" onClick={onBack} aria-label="Go back" title="Go back">
-          <ArrowLeft size={19} />
-        </button>
-        <p>COUNTER STUDY / CAMERA</p>
-        <span>01 FRAME</span>
-      </header>
-
-      <div className="capture-shell">
+      <div className={`capture-shell${mode === 'intro' ? ' capture-shell--intro' : ''}`}>
         {mode === 'intro' ? (
-          <>
-            <div className="capture-copy">
-              <p className="zine-kicker">Gather everything into one frame</p>
-              <h1>Show us what<br />you are working with.</h1>
-              <p>Good daylight helps. Keep labels visible and ingredients separate where you can.</p>
-            </div>
-
-            <img className="capture-study-image" src="/assets/zine-produce-study.webp" alt="Printed study of smoothie ingredients" />
-
-            <div className="capture-actions">
-              <button type="button" className="zine-button zine-button--accent" onClick={startCamera}>
-                <Camera size={19} /> Take a photo
-              </button>
-              <button type="button" className="zine-button zine-button--paper" onClick={() => uploadRef.current?.click()}>
-                <ImageUp size={19} /> Upload a photo
-              </button>
-            </div>
-          </>
+          <div className="capture-actions">
+            <button type="button" className="zine-button zine-button--accent" onClick={startCamera}>
+              <Camera size={19} /> Take a Photo
+            </button>
+            <button type="button" className="zine-button zine-button--paper" onClick={() => uploadRef.current?.click()}>
+              <ImageUp size={19} /> Upload a Photo
+            </button>
+          </div>
         ) : null}
 
         {mode === 'camera' ? (
