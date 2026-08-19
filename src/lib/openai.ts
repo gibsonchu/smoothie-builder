@@ -3,6 +3,13 @@ import { ingredients as ingredientCatalog, type Ingredient } from '../data/ingre
 export type Recipe = {
   name: string
   serves: string
+  calories: number
+  nutrition: {
+    protein: string
+    carbs: string
+    fat: string
+    fiber: string
+  }
   ingredients: { item: string; amount: string }[]
   steps: string[]
   grandmasNote: string
@@ -25,6 +32,13 @@ const fallbackAmounts = ['a good handful', 'one ripe scoop', 'a cheerful splash'
 export const fallbackRecipe = (ingredients: Ingredient[]): Recipe => ({
   name: `${ingredients[0]?.name ?? 'Sunny'} Porch Smoothie`,
   serves: 'Serves 2, or one hungry sweetheart',
+  calories: 285,
+  nutrition: {
+    protein: '9g',
+    carbs: '48g',
+    fat: '7g',
+    fiber: '8g',
+  },
   ingredients: ingredients.map((ingredient, index) => ({
     item: ingredient.name,
     amount: fallbackAmounts[index % fallbackAmounts.length],
@@ -43,7 +57,15 @@ const parseRecipe = (content: string, ingredients: Ingredient[]) => {
   const fenced = content.match(/```(?:json)?\s*([\s\S]*?)```/)
   const raw = fenced?.[1] ?? content
   try {
-    return JSON.parse(raw) as Recipe
+    const parsed = JSON.parse(raw) as Partial<Recipe>
+    const fallback = fallbackRecipe(ingredients)
+    return {
+      ...fallback,
+      ...parsed,
+      nutrition: { ...fallback.nutrition, ...parsed.nutrition },
+      ingredients: Array.isArray(parsed.ingredients) ? parsed.ingredients : fallback.ingredients,
+      steps: Array.isArray(parsed.steps) ? parsed.steps : fallback.steps,
+    }
   } catch {
     return fallbackRecipe(ingredients)
   }
@@ -67,11 +89,11 @@ export async function generateRecipe(ingredients: Ingredient[]): Promise<Recipe>
           {
             role: 'system',
             content:
-              "You are a warm, loving grandmother who has been making smoothies for 40 years. Write recipes in first person, casually and affectionately, like you're writing a note card for your grandchild. Use imprecise, loving language: 'a good handful', 'until it looks right'. Always give the smoothie a charming name.",
+              "You are a warm, loving grandmother who has been making smoothies for 40 years. Write recipes in first person, casually and affectionately, like you're writing a note card for your grandchild. Use imprecise, loving language: 'a good handful', 'until it looks right'. Always give the smoothie a charming name. Include a reasonable estimated calorie count and simple macro estimates per serving.",
           },
           {
             role: 'user',
-            content: `Make me a smoothie recipe using: ${ingredients.map((item) => item.name).join(', ')}. Format your response as JSON with fields: name (string), serves (string), ingredients (array of {item, amount}), steps (array of strings), grandmasNote (string).`,
+            content: `Make me a smoothie recipe using: ${ingredients.map((item) => item.name).join(', ')}. Format your response as JSON with fields: name (string), serves (string), calories (number per serving), nutrition ({protein, carbs, fat, fiber} as strings with units), ingredients (array of {item, amount}), steps (array of 3-5 strings), grandmasNote (string).`,
           },
         ],
       }),

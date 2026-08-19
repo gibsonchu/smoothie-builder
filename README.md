@@ -1,8 +1,8 @@
-# Smoothie Builder
+# Make Something Good
 
-A mobile-first sensory smoothie builder built with React, Vite, TypeScript, Tailwind CSS, Framer Motion, and dnd-kit.
+A mobile-first smoothie recipe maker with a quiet, print-inspired zine interface, built with React, Vite, TypeScript, Tailwind CSS, and Framer Motion.
 
-Users can drag ingredients manually or take/upload a photo of fruit and vegetables on the counter. The app identifies likely smoothie ingredients, asks the user to confirm the matches, then adds the confirmed items to the blender for recipe generation.
+Users start in one of two ways: take or upload a photo of the ingredients on the counter, or choose ingredients from a searchable index. Photo matches are editable before confirmation. The final recipe fades in and types itself onto the page with steps, ingredient amounts, estimated calories, macros, and a warm note.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/gibsonchu/smoothie-builder)
 
@@ -26,7 +26,7 @@ This app intentionally calls OpenAI directly from the browser because it is a pe
 The same key powers:
 
 - `gpt-4o` image analysis for ingredient detection from a user photo
-- `gpt-4o` recipe generation for the confirmed blender ingredients
+- `gpt-4o` recipe generation for confirmed ingredients, including estimated nutrition
 
 In Vercel, add `VITE_OPENAI_API_KEY` in Project Settings -> Environment Variables.
 
