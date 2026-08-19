@@ -36,6 +36,7 @@ The combined comparison shows the supplied artwork and mobile implementation at 
 - P2: the first mobile capture occurred before the 4.5 MB visual anchor finished decoding. Re-captured after load and confirmed the final implementation screenshot includes the produce study with stable reserved dimensions.
 - P2: the first landing direction contained substantially more editorial copy and treated the produce study as an inset figure. Replaced it with the artwork as a full-viewport background and reduced the visible interface to one title and two actions. Mobile and desktop captures confirm the cluster remains visible without overflow.
 - P2: the full-background crop made the fruit cluster too visually dominant. Reduced the artwork to 64% of the viewport height and verified the smaller composition at 375 x 812 and 1440 x 900 without overflow.
+- P2: the artwork canvas initially formed a faint lighter rectangle against the page. Sampled its edge color, matched the landing background to `#e7d9bd`, and softly masked the raster perimeter so the paper field now renders as one continuous surface.
 
 ## Findings
 

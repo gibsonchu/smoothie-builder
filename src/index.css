@@ -98,10 +98,20 @@ button:disabled { cursor: not-allowed; }
   position: relative;
   min-height: 100svh;
   overflow: hidden;
+  background-color: #e7d9bd;
+}
+
+.landing-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
   background-image: url('/assets/zine-produce-study.webp');
   background-position: center 58%;
   background-size: auto 64%;
   background-repeat: no-repeat;
+  -webkit-mask-image: radial-gradient(ellipse 48% 43% at 50% 58%, #000 48%, transparent 90%);
+  mask-image: radial-gradient(ellipse 48% 43% at 50% 58%, #000 48%, transparent 90%);
 }
 
 .landing-copy {
