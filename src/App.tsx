@@ -5,6 +5,7 @@ import { BlenderDropZone } from './components/BlenderDropZone'
 import { GlassSelector } from './components/GlassSelector'
 import { GlassSVG } from './components/GlassSVG'
 import { IngredientShelf } from './components/IngredientShelf'
+import { PhotoIngredientScanner } from './components/PhotoIngredientScanner'
 import { PourAnimation } from './components/PourAnimation'
 import { RecipeCard } from './components/RecipeCard'
 import { SpaceSelector } from './components/SpaceSelector'
@@ -45,6 +46,16 @@ function App() {
       setSelected((items) => [...items, dropped])
     }
     setActiveIngredient(null)
+  }
+
+  const addPhotoIngredients = (detectedIngredients: Ingredient[]) => {
+    setSelected((items) => {
+      const existingIds = new Set(items.map((item) => item.id))
+      const additions = detectedIngredients.filter((ingredient) => !existingIds.has(ingredient.id))
+      return [...items, ...additions]
+    })
+    setRecipe(null)
+    setFill(0)
   }
 
   const handleBlend = async () => {
@@ -114,7 +125,10 @@ function App() {
           </header>
 
           <section className="relative flex flex-1 flex-col gap-3 px-3 pb-0 lg:grid lg:grid-cols-[16rem_1fr] lg:px-6 lg:pb-6">
-            <IngredientShelf ingredients={ingredients} />
+            <IngredientShelf
+              ingredients={ingredients}
+              scannerSlot={<PhotoIngredientScanner ingredients={ingredients} onConfirm={addPhotoIngredients} />}
+            />
             <div className="relative flex min-h-[calc(100svh-315px)] flex-1 flex-col overflow-hidden rounded-t-[8px] border border-[color:var(--panel-border)] bg-[color:var(--panel)] backdrop-blur-md lg:min-h-0 lg:rounded-[8px]">
               <div className="absolute inset-x-0 bottom-0 h-[34%] bg-[image:var(--surface-texture)] shadow-[0_-18px_45px_rgba(0,0,0,0.14)_inset]" />
               <PourAnimation active={isPouring} color={blendedColor} />
