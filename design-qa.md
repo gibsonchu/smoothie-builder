@@ -38,6 +38,7 @@ The combined comparison shows the supplied cropped artwork beside the mobile imp
 - P2: the full-background crop made the fruit cluster too visually dominant. Reduced the artwork to 64% of the viewport height and verified the smaller composition at 375 x 812 and 1440 x 900 without overflow.
 - P2: the artwork canvas initially formed a faint lighter rectangle against the page. Sampled its edge color, matched the landing background to `#e7d9bd`, and softly masked the raster perimeter so the paper field now renders as one continuous surface.
 - P2: the landing still used the original tall poster asset after the desired composition had been cropped externally. Replaced it with the supplied 500 x 352 crop, matched the page to its `#ebdfc2` paper edge, and changed responsive sizing from height-based to width-based so the full crop remains visible.
+- P2: the title and actions were pinned near opposite viewport edges, making the landing feel vertically dispersed. Moved the artwork into the document flow and centered the title, artwork, and actions as one responsive group; its measured center is exactly 406 px at 375 x 812 and 450 px at 1440 x 900.
 
 ## Findings
 

@@ -101,19 +101,6 @@ button:disabled { cursor: not-allowed; }
   background-color: #ebdfc2;
 }
 
-.landing-page::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: url('/assets/zine-produce-study.webp');
-  background-position: center 58%;
-  background-size: min(82vw, 500px) auto;
-  background-repeat: no-repeat;
-  -webkit-mask-image: radial-gradient(ellipse 48% 31% at 50% 58%, #000 48%, transparent 92%);
-  mask-image: radial-gradient(ellipse 48% 31% at 50% 58%, #000 48%, transparent 92%);
-}
-
 .landing-copy {
   position: relative;
   z-index: 2;
@@ -121,9 +108,10 @@ button:disabled { cursor: not-allowed; }
   min-height: 100svh;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: clamp(34px, 6svh, 58px);
   width: 100%;
-  padding: 12svh 20px 8svh;
+  padding: 32px 20px;
   text-align: center;
 }
 
@@ -141,6 +129,14 @@ button:disabled { cursor: not-allowed; }
 .landing-copy h1 {
   font-size: clamp(54px, 15vw, 82px);
   line-height: 0.86;
+}
+
+.landing-artwork {
+  display: block;
+  width: min(82vw, 500px);
+  height: auto;
+  -webkit-mask-image: radial-gradient(ellipse 48% 82% at 50% 50%, #000 48%, transparent 92%);
+  mask-image: radial-gradient(ellipse 48% 82% at 50% 50%, #000 48%, transparent 92%);
 }
 
 .landing-actions {
@@ -431,7 +427,7 @@ button:disabled { cursor: not-allowed; }
 .recipe-footer > span { color: var(--faded); font-size: 7px; letter-spacing: 0.12em; }
 
 @media (min-width: 700px) {
-  .landing-copy { padding: 10svh 42px 7svh; }
+  .landing-copy { padding: 42px; }
   .landing-actions { width: min(100%, 360px); }
   .editor-page, .capture-page, .recipe-page { padding: 26px 38px 36px; }
   .ingredient-ledger { grid-template-columns: 1fr 1fr; }
