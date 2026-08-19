@@ -9,11 +9,11 @@
 - Source dimensions: 972 x 1619 px
 - Mobile implementation: 375 x 812 CSS px, 375 x 812 px capture, device scale factor 1
 - Desktop implementation: 1440 x 900 CSS px, 1440 x 900 px capture, device scale factor 1
-- State: production landing page, manual ingredient flow, photo review, and completed recipe
+- State: simplified production landing page, manual ingredient flow, photo review, and completed recipe
 
 ## Full-View Comparison
 
-The combined comparison shows the reference and mobile implementation at the same 812 px height. Both use an ivory scanned-paper field, a small central visual cluster, restrained typewriter microcopy, a single saturated ink accent, and large areas of quiet negative space. The product necessarily introduces two primary actions, but their compact rectangular treatment stays inside the reference's print grammar rather than becoming conventional rounded app cards.
+The combined comparison shows the supplied artwork and mobile implementation at the same 812 px height. The artwork now fills the viewport directly, preserving the ivory paper field, central produce cluster, red fruit anchor, and negative space. The only interface copy is the requested title and the two compact actions, keeping the landing page materially as quiet as the source.
 
 ## Focused Evidence
 
@@ -27,12 +27,13 @@ The combined comparison shows the reference and mobile implementation at the sam
 - Spacing and layout rhythm: the primary cluster stays centered with broad paper margins. Mobile controls remain within 335 px, while desktop content holds a restrained 520-620 px working width.
 - Colors and tokens: warm ivory paper, charcoal ink, faded gray metadata, and one tomato-red action/selection color match the reference's restrained palette logic.
 - Image quality and asset fidelity: the generated produce study is a real raster asset with halftone, xerox wear, aged paper, and a visible red fruit anchor. It is correctly cropped at mobile and desktop sizes.
-- Copy and content: product language is brief, concrete, and embedded in the composition. No instructional marketing block or obsolete kitchen/glass copy remains.
+- Copy and content: the landing page contains only “Make a juice or smoothie.”, “Photo”, and “Select”. Header metadata, side notes, caption, kicker, and descriptive paragraph are absent.
 
 ## Comparison History
 
 - P2: ingredient rows initially exposed a list-item role instead of their interactive button semantics. Removed the conflicting role, rebuilt, redeployed, and verified search, selection, and confirmation through role-based browser interaction.
 - P2: the first mobile capture occurred before the 4.5 MB visual anchor finished decoding. Re-captured after load and confirmed the final implementation screenshot includes the produce study with stable reserved dimensions.
+- P2: the first landing direction contained substantially more editorial copy and treated the produce study as an inset figure. Replaced it with the artwork as a full-viewport background and reduced the visible interface to one title and two actions. Mobile and desktop captures confirm the cluster remains visible without overflow.
 
 ## Findings
 
